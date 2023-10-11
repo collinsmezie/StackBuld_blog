@@ -1,139 +1,3 @@
-
-// import UserList from "../../components/userList";
-
-// const TechBlogPosts = () => {
-//   const [fieldCopies, setFieldCopies] = useState([]);
-
-//   useEffect(() => {
-//     const client = createClient({
-//       space: "vwy0ghuk1nr5",
-//       accessToken: "LylgR44z0y0S2VtFEMyOYXxZEm8dcucaMVegFQP87OQ",
-//     });
-
-//     client
-//       .getEntries({
-//         content_type: "topic",
-//         "fields.name": "TECHNOLOGY",
-//       })
-//       .then((response) => {
-//         const {
-//           fields: { post },
-//           sys,
-//         } = response.items[0];
-//         console.log(post);
-
-//         const copies = post.map(({ fields = {}, sys }) => {
-//           const {
-//             authorName = "",
-//             authorPhoto = "",
-//             authorWebsite = "",
-//             blogPostImage = "",
-//             postBody = {},
-//             postTitle = "",
-//             published = "",
-//           } = fields;
-
-//           return {
-//             authorName,
-//             authorPhoto: authorPhoto && `https:${authorPhoto.fields.file.url}`,
-//             authorWebsite,
-//             blogPostImage: blogPostImage && `https:${blogPostImage.fields.file.url}`,
-//             postBody: postBody && postBody.content[0],
-//             postTitle,
-//             published,
-//             id: sys.id,
-//           };
-//         });
-
-//         setFieldCopies(copies);
-//       })
-//       .catch(console.error);
-//   }, []);
-
-//   return (
-//     <div className="mx-auto">
-//       <Navbar />
-//       <Head>
-//         <title>Technology Blog Posts</title>
-//       </Head>
-//       <div className={styles.topicSection}>
-//         <div className={styles.topic}>
-//           <div className="inline-block rounded-full bg-gray-200 p-1 mr-3">
-//             <TagIcon />
-//           </div>
-//           <h1 className={styles.tech}>TECHNOLOGY</h1>
-//         </div>
-//         <div className={styles.buttons}>
-//           <button className="bg-teal-500 hover:bg-white text-white hover:text-teal-500 font-bold py-1 px-2 rounded-full border-2 border-teal-500 hover:border-teal-500 transition-colors duration-300">
-//             Follow
-//           </button>
-//           <Link href="/editorPage">
-//             <div className="hover:bg-white text-teal-500 hover:text-teal-500 font-bold py-1 px-2 rounded-full border-2 border-teal-500 hover:border-teal-500 transition-colors duration-300">
-//               Start writing
-//             </div>
-//           </Link>
-
-//         </div>
-//       </div>
-
-//       {fieldCopies.map((fields) => (
-//         <div key={fields.id} className={styles.postCard}>
-//           <div className={styles.profileInfo}>
-//             <div className="">
-//               {fields.authorPhoto && (
-//                 <Image
-//                   src={fields.authorPhoto}
-//                   alt={fields.authorName}
-//                   className="w-12 h-12 rounded-full mr-4"
-//                   width={50}
-//                   height={50}
-//                 />
-//               )}
-//             </div>
-//             <div className={styles.nameAndDate}>
-//               <p>{fields.authorName}</p>
-//               <p className="text-gray-500 text-sm mt-0.5">
-//                 Published on: {new Date(fields.published).toDateString()}
-//               </p>
-//             </div>
-//             <div className="ml-4 flex items-center">
-//               <StarIcon className="w-6 h-6 mr-2" />
-//               <p className="ml-4 text-gray-500 text-sm">Members only</p>
-//             </div>
-//           </div>
-//           <div className={styles.postSection}>
-//             <div className={styles.postTitleAndText}>
-//               <h2 className="text-2xl font-bold mb-4">{fields.postTitle}</h2>
-//               <div className="max-w-4xl mb-7">
-//                 {documentToReactComponents(fields.postBody)}
-//               </div>
-//               <div className="flex items-center">
-//                 <Link href={`/technology/${fields.id}`}>
-//                   <div className={styles.readPostBtn}>Read More</div>
-//                 </Link>
-//               </div>
-//             </div>
-//             <div className="mb-10">
-//               {fields.blogPostImage && (
-//                 <Image
-//                   src={fields.blogPostImage}
-//                   width={180}
-//                   height={100}
-//                   alt={fields.postTitle}
-//                 />
-//               )}
-//             </div>
-//           </div>
-//         </div>
-//       ))}
-//       <Footer />
-//     </div>
-//   );
-// };
-
-// export default TechBlogPosts;
-
-
 import { useEffect, useState } from "react";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
@@ -147,42 +11,29 @@ import { useRouter } from 'next/router';
 
 
 
+
+
 const TechBlogPosts = () => {
 
   const router = useRouter();
-  const { topic } = router.query;
-  console.log("POST TOPIC", topic);
+  const { route } = router;
+  console.log("ROUTEE", route);
 
   const [blogPosts, setBlogPosts] = useState([]);
 
-  // useEffect(() => {
-
-  //   // Fetch data from your API
-  //   fetch(`/api/posts/read/topic/${topic}`) 
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setBlogPosts(data); // Assuming data is an array of blog posts
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching data:', error);
-  //     });
-  // }, []);
-
   useEffect(() => {
-    // Fetch data from your API using the `topic` from the path
-    if (topic) {
-      fetch(`/api/posts/read/topic/${topic}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setBlogPosts(data); // Assuming data is an array of blog posts
-        })
-        .catch((error) => {
-          console.error('Error fetching data:', error);
-        });
-    }
-  }, [topic]); // Add `topic` as a dependency to rerun the effect when it changes
 
-  // Rest of your component code...
+    // Fetch data from your API
+    fetch(`/api/posts/read/topic/${route}`) 
+      .then((response) => response.json())
+      .then((data) => {
+        setBlogPosts(data); // Assuming data is an array of blog posts
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
 
 
   return (
@@ -211,7 +62,7 @@ const TechBlogPosts = () => {
         </div>
       </div>
 
-      {blogPosts.map((post) => (
+      {blogPosts?.map((post) => (
         <div key={post.id} className={styles.postCard}>
           <div className={styles.profileInfo}>
             <div className={styles.nameAndDate}>
@@ -226,12 +77,13 @@ const TechBlogPosts = () => {
           </div>
           <div className={styles.postSection}>
             <div className={styles.postTitleAndText}>
-              <h2 className="text-2xl font-bold mb-4">{fields.postTitle}</h2>
+              <h2 className="text-2xl font-bold mb-4">{post.title}</h2>
               <div className="max-w-4xl mb-7">
                 {post.content}
               </div>
               <div className="flex items-center">
-                <Link href={`/technology/${post.id}`}>
+                {console.log("POST", post)}
+                <Link href={`/${route}/${post._id}`}>
                   <div className={styles.readPostBtn}>Read More</div>
                 </Link>
               </div>

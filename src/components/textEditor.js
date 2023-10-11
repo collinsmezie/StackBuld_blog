@@ -67,9 +67,10 @@ const ReactQuill = dynamic(() => import('react-quill'), {
   loading: () => <p>Loading ...</p>,
 });
 
-function removeHtmlTags(html) {
+export function removeHtmlTags(html) {
   // Use a regular expression to remove HTML tags
-  return html.replace(/<[^>]*>/g, '');
+  return html.replace(/<[^>]*>|&nbsp;/g, '')
+  ;
 }
 
 

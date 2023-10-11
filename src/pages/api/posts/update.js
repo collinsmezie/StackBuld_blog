@@ -6,10 +6,10 @@ dbConnect();
 export default async (req, res) => {
   if (req.method === "PUT") {
     try {
-      const { id, title, content, topic } = req.body;
+      const { id, title, content } = req.body;
       const updatedPost = await Post.findByIdAndUpdate(
         id,
-        { title, content, topic },
+        { title, content },
         { new: true }
       );
       if (!updatedPost) {
