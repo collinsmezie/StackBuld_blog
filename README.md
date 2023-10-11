@@ -63,9 +63,6 @@ Kindly modify the files as needed.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Deploy on Vercel
-
-
 
 
 # StackBuld API Documentation
