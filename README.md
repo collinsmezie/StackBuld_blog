@@ -8,7 +8,7 @@ A Simple Blogging Platform Application
 
 
 ## Objective:
-StackBuld Blog is a simple web based blogging platform built with Next.js, React, JavaScript/TypeScript, and React Query and MongoD, The app is user-friendly, and the code is intended to adhere to development best practices as well-organized and properly documented.
+StackBuld Blog is a simple web based blogging platform built with Next.js, React, JavaScript/TypeScript, and React Query and MongoDB, The app is user-friendly, and the code is intended to adhere to development best practices as well-organized and properly documented.
 
 ## Features:
 CRUD Functionality for Blog Posts:
@@ -26,21 +26,21 @@ CRUD Functionality for Blog Posts:
 ## API Integration/Development:
 
 StackBuld blog uses a NextJs based API's for fetching data, caching, and state management.
-" " Uses a customized RESTful API cluster for data storage and retrieval. 
+it Uses a customized RESTful API cluster for data storage and retrieval. 
 
 
 ## Deployment:
 
-StackBuld Blog is live on vercel @.......
+StackBuld Blog is live on vercel @coming soon
 
 
 ## Built With
-NextJs
-Tailwind CSS
-Custom API
-JavaScript/typeScript
-NextJs state management
-MongoDB
+* NextJs
+* Tailwind CSS
+* Custom API
+* JavaScript/typeScript
+* NextJs state management
+* MongoDB
 
 ## Getting Started
 To get a local copy up and running follow these simple steps.
@@ -65,10 +65,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Deploy on Vercel
 
-# StackBuld Blog
 
 
-# API Documentation
+
+# StackBuld API Documentation
 
 This documentation outlines the usage of the StackBuld Blog API. The API allows you to perform basic CRUD (Create, Read, Update, Delete) operations on a collection of blog Posts stored in a MongoDB based cluster.
 
