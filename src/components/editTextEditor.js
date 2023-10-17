@@ -7,6 +7,7 @@ import styles from "../pages/technology/index.module.css";
 import CustomEditor from './textEditor';
 import { removeHtmlTags } from './textEditor';
 
+
 const ReactQuill = dynamic(() => import('react-quill'), {
     ssr: false,
     loading: () => <p>Loading ...</p>,
@@ -38,6 +39,7 @@ function EditTextEditor({ cardId, title, content }) {
       if (response.ok) {
         // The card was successfully updated
         console.log('Card updated successfully');
+        router.push('/editSuccess');
         // Disable editing mode
         // You can perform further actions here, e.g., update your UI
       } else {

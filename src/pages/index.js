@@ -24,7 +24,7 @@ export default function Home() {
     }, []);
     
   return (
-    <div className="bg-white text-black">
+    <div className="bg-white border text-black ">
       <Navbar />
       <Head>
         <title>My Blog</title>
@@ -34,38 +34,19 @@ export default function Home() {
       <main className="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8 pt-4">
         <div className="pb-12">
           <div className="text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
+            <h1 className="text-gray-600 text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
               Latest Posts
             </h1>
           </div>
           {blogPosts.map((post) => (
             <div key={post._id} className="mb-10">
-              <BlogPostCard title={post.title} content={post.content} topic={post.topic} id={post._id} />
+              <BlogPostCard title={post.title} content={post.content} topic={post.topic} createdAt={post.createdAt} id={post._id} />
     
             </div>
           ))}
         </div>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
-}
-
-
-
-export async function getStaticProps() {
-  const client = createClient({
-    space: "vwy0ghuk1nr5",
-    accessToken: "LylgR44z0y0S2VtFEMyOYXxZEm8dcucaMVegFQP87OQ",
-  });
-
-  const res = await client.getEntries({
-    content_type: "topic",
-  });
-
-  return {
-    props: {
-      categories: res.items,
-    },
-  };
 }
